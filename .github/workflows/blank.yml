@@ -43,10 +43,12 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: binaries
+          path: dist/
 
       - name: Find tag name
         run: |
           ls -lh
+          ls -lh dist
           echo "$GITHUB_ENV"
           echo "${GITHUB_REF}"
           echo "${GITHUB_REF#refs/tags/}"
