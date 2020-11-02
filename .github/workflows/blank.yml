@@ -59,4 +59,7 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "$RELEASE_TAG" dist/*
+        run: |
+          echo test > one.txt
+          gh release create "$RELEASE_TAG" one.txt
+          gh release create "$RELEASE_TAG" dist/*
