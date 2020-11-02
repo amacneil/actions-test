@@ -25,6 +25,7 @@ jobs:
           echo Hello, world!
           mkdir -p dist
           echo Hello > dist/artifact.txt
+          echo World > dist/derp.txt
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
