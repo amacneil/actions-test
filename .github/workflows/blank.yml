@@ -23,6 +23,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
+          echo yo
           mkdir -p dist
           echo Hello > dist/artifact.txt
           echo World > dist/derp.txt
