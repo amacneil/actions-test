@@ -30,9 +30,16 @@ jobs:
           mkdir -p dist
           echo Hello > dist/artifact
 
+      - name: Find tag name
+        run: |
+          echo "$GITHUB_ENV"
+          echo "${GITHUB_REF}"
+          echo "${GITHUB_REF#refs/tags/}"
+          echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> "$GITHUB_ENV"
+
       # Upload artifacts for release tags
       - name: Release
         if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create '${{ github.ref }}' dist/*
+        run: gh release create "$RELEASE_TAG" dist/*
